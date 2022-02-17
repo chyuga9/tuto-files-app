@@ -1,5 +1,10 @@
 package com.tutomanipulatingfiles.tutofilesapp.repository;
 
-public interface FileDBRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+import com.tutomanipulatingfiles.tutofilesapp.model.FileDB;
+
+@Repository
+public interface FileDBRepository extends JpaRepository<FileDB, String> {
 }
