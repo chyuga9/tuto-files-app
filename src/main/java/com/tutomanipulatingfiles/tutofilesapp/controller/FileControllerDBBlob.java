@@ -27,7 +27,7 @@ public class FileControllerDBBlob {
   @Autowired
   private FileStorageService storageService;
   
-  @PostMapping("/upload")
+  @PostMapping("/uploadblob")
   public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
     String message = "";
     try {
@@ -40,7 +40,7 @@ public class FileControllerDBBlob {
     }
   }
   
-  @GetMapping("/files")
+  @GetMapping("/filesblob")
   public ResponseEntity<List<ResponseFile>> getListFiles() {
     List<ResponseFile> files = storageService.getAllFiles().map(dbFile -> {
       String fileDownloadUri = ServletUriComponentsBuilder
@@ -57,7 +57,7 @@ public class FileControllerDBBlob {
     return ResponseEntity.status(HttpStatus.OK).body(files);
   }
   
-  @GetMapping("/files/{id}")
+  @GetMapping("/filesblob/{id}")
   public ResponseEntity<byte[]> getFile(@PathVariable String id) {
     FileDB fileDB = storageService.getFile(id);
     return ResponseEntity.ok()
